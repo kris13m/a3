@@ -18,11 +18,27 @@ spl_autoload_register(function ($class) {
     }
 });
 
+use App\Core\Logger;
 
 header('Content-Type: application/json');
 
-// Get method
+// Get method (initial)
 $method = $_SERVER['REQUEST_METHOD'];
+
+// Support _method override for PUT/DELETE via POST
+if ($method === 'POST') {
+    // For form-encoded data
+    if (isset($_POST['_method'])) {
+        $method = strtoupper($_POST['_method']);
+    }
+    // For JSON payloads
+    else {
+        $input = json_decode(file_get_contents('php://input'), true);
+        if (isset($input['_method'])) {
+            $method = strtoupper($input['_method']);
+        }
+    }
+}
 
 // Parse the URI path
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -37,9 +53,20 @@ $cleanUri = trim($cleanUri, '/');
 $segments = explode('/', $cleanUri);
 $resource = $segments[0] ?? null;
 
+// --- Logger setup and logging (together) ---
+
+$logger = new Logger(__DIR__ . '/logs/requests.log');
+$ip = $_SERVER['REMOTE_ADDR'];
+$body = file_get_contents('php://input');
+
+$logger->log("[$method] $uri from $ip. Body: $body");
+
+// --- Controller routing ---
+
 $controllerPath = __DIR__ . "/app/controllers/{$resource}.php";
 
-print_r($controllerPath);
+// Optional debug print (comment out or remove when stable)
+// print_r($controllerPath);
 
 if (file_exists($controllerPath)) {
     global $segments, $method;

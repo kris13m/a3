@@ -1,0 +1,12 @@
+[2025-05-28 23:29:22] [GET] /opgaver/a3/playlists from ::1. Body: {
+    "track_id": 69
+}
+[2025-05-28 23:29:50] [GET] /opgaver/a3/playlists from ::1. Body: {
+    "track_id": 68
+}
+[2025-05-28 23:29:51] [GET] /opgaver/a3/playlists from ::1. Body: {
+    "track_id": 68
+}
+[2025-05-28 23:29:52] [GET] /opgaver/a3/playlists from ::1. Body: {
+    "track_id": 68
+}

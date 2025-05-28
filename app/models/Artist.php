@@ -40,4 +40,40 @@ class Artist extends Model
     $params = ['artistId' => $artistId];
     return self::execute($sql, $params);
     }
+
+    public static function create(string $name): array
+    {
+        $sql = "INSERT INTO artist (Name) VALUES (:name)";
+        $params = ['name' => $name];
+        $id = self::execute($sql, $params);
+
+        return [
+            'id' => (int)$id,
+            'name' => $name
+        ];
+    }
+
+    public static function existsByName(string $name): bool
+    {
+        $sql = "SELECT COUNT(*) FROM artist WHERE Name = :name";
+        $params = ['name' => $name];
+        $result = self::execute($sql, $params);
+        
+        return $result[0]['COUNT(*)'] > 0;
+    }
+
+    public static function hasAlbums(int $artistId): bool
+    {
+        $sql = "SELECT COUNT(*) as count FROM album WHERE ArtistId = :artistId";
+        $params = ['artistId' => $artistId];
+        $result = self::execute($sql, $params);
+        return $result[0]['count'] > 0;
+    }
+
+    public static function delete(int $artistId): bool
+    {
+        $sql = "DELETE FROM artist WHERE ArtistId = :artistId";
+        $params = ['artistId' => $artistId];
+        return self::execute($sql, $params) > 0;
+    }
 }
