@@ -18,11 +18,11 @@
 
     if ($db === null) {
         try {
-            $dsn = 'mysql:host=' . config::DB_HOST .
-                   ';dbname=' . config::DB_NAME . 
+            $dsn = 'mysql:host=' . Config::getDbHost() .
+                   ';dbname=' . Config::getDbName() . 
                    ';charset=utf8';
 
-            $db = new PDO($dsn, Config::DB_USER, Config::DB_PASSWORD);
+            $db = new PDO($dsn, Config::getDbUser(), Config::getDbPassword());
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             throw new \Exception("Error <strong>{$e->getMessage()}</strong> in model " . get_called_class());

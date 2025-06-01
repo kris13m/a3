@@ -1,12 +1,15 @@
 <?php
 
+require_once __DIR__ . '/app/Config/env_loader.php';
+loadEnv(__DIR__ . '/.env');
+
 spl_autoload_register(function ($class) {
     $prefixes = [
         'App\\' => __DIR__ . '/app/',
     ];
 
     foreach ($prefixes as $prefix => $baseDir) {
-        if (strncmp($prefix, $class, strlen($prefix)) !== 0) continue;
+        if (strncmp($class, $prefix, strlen($prefix)) !== 0) continue;
 
         $relativeClass = substr($class, strlen($prefix));
         $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
