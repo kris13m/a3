@@ -42,12 +42,27 @@ class Album extends Model
     }
 
     public static function getTracksByAlbumId(int $albumId): array
-    {
-        $sql = "SELECT track.TrackId, track.Name, track.MediaTypeId, track.GenreId
-                FROM track
-                WHERE track.AlbumId = :albumId";
-        return static::execute($sql, ['albumId' => $albumId]);
-    }
+{
+    $sql = "
+        SELECT 
+            track.TrackId,
+            track.Name,
+            
+            mediatype.Name AS MediaType,
+            
+            genre.Name AS Genre,
+            track.Composer,
+            track.Milliseconds,
+            track.Bytes,
+            track.UnitPrice
+        FROM track
+        JOIN mediatype ON track.MediaTypeId = mediatype.MediaTypeId
+        JOIN genre ON track.GenreId = genre.GenreId
+        WHERE track.AlbumId = :albumId
+    ";
+    
+    return static::execute($sql, ['albumId' => $albumId]);
+}
 
     public static function create(string $title, int $artistId): int
     {

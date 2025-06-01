@@ -10,3 +10,51 @@
 [2025-05-28 23:29:52] [GET] /opgaver/a3/playlists from ::1. Body: {
     "track_id": 68
 }
+[2025-06-01 14:01:52] [GET] /opgaver/a3/albums from ::1. Body: {
+    "track_id": 68
+}
+[2025-06-01 14:03:01] [GET] /opgaver/a3/albums/1/tracks from ::1. Body: {
+    "track_id": 68
+}
+[2025-06-01 14:04:43] [GET] /opgaver/a3/albums/1/tracks from ::1. Body: {
+    "track_id": 68
+}
+[2025-06-01 14:04:54] [GET] /opgaver/a3/albums/1/tracks from ::1. Body: {
+    "track_id": 68
+}
+[2025-06-01 14:06:04] [GET] /opgaver/a3/albums/1/tracks from ::1. Body: {
+    "track_id": 68
+}
+[2025-06-01 14:42:35] [GET] /opgaver/a3/albums/1/tracks from ::1. Body: {
+    "track_id": 68
+}
+[2025-06-01 14:42:42] [GET] /opgaver/a3/albums/1/tracks from ::1. Body: {
+    "track_id": 68
+}
+[2025-06-01 14:44:05] [GET] /opgaver/a3/albums/1/tracks from ::1. Body: {
+    "track_id": 68
+}
+[2025-06-01 14:46:29] [GET] /opgaver/a3/albums/1/tracks from ::1. Body: {
+    "track_id": 68
+}
+[2025-06-01 14:47:17] [GET] /opgaver/a3/albums/1/tracks from ::1. Body: {
+    "track_id": 68
+}
+[2025-06-01 14:47:54] [GET] /opgaver/a3/albums/1/tracks from ::1. Body: {
+    "track_id": 68
+}
+[2025-06-01 14:59:29] [GET] /opgaver/a3/tracks/123 from ::1. Body: {
+    "track_id": 68
+}
+[2025-06-01 17:24:04] [GET] /opgaver/a3/albums/21 from ::1. Body: {
+    "track_id": 68
+}
+[2025-06-01 17:24:35] [GET] /opgaver/a3/albums/21 from ::1. Body: {
+    "track_id": 68
+}
+[2025-06-01 17:24:58] [GET] /opgaver/a3/albums/21 from ::1. Body: {
+    "track_id": 68
+}
+[2025-06-01 17:35:35] [GET] /opgaver/a3/albums/21 from ::1. Body: {
+    "track_id": 68
+}
